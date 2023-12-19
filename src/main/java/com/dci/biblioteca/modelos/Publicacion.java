@@ -1,5 +1,7 @@
 package com.dci.biblioteca.modelos;
 
+import com.dci.biblioteca.enums.EstadoProducto;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -35,6 +37,9 @@ public class Publicacion {
 
     @Column(name = "descripcion")
     private String descripcion;
+
+    @Column(name = "estado")
+    private EstadoProducto estado;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cuenta")

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.dci.biblioteca.modelos.Cuenta;
 import com.dci.biblioteca.modelos.Publicacion;
 import com.dci.biblioteca.repositorios.PublicacionRepository;
 import com.dci.biblioteca.servicios.PublicacionService;
@@ -54,6 +55,9 @@ public class PublicacionController {
 
     @PostMapping(value = "/crear")
     public void crearPublicacion(@RequestBody Publicacion publicacion, Authentication authentication) {
+
+        Cuenta usuario = usuarioService.obtenerUsuarioSesion(authentication);
+        publicacion.setCuenta(usuario);
         publicacionService.guardarPublicacion(publicacion);
     }
 
